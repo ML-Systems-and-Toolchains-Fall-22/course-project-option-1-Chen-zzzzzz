@@ -65,4 +65,5 @@ find your bucket datails, copy the gsutil URI for players_15.csv to 22.
 players_15 = spark.read.csv('your_gsutil_URI',header=True, inferSchema = True)
 repeat it for all data
 
-
+# url for video
+https://drive.google.com/file/d/1l8to-9-ggYzyOGVoLTdBzBSRvbB5OFWk/view?usp=sharing
