@@ -1,5 +1,6 @@
 # project-template
 Project Template
+
 # Task 1&2 
 # Constraints:
 1. Short_Name, Long_Name, Player_Position, Club_Name, League_Name, Club_Position is "NotNull" String 
@@ -37,7 +38,7 @@ a) Depending on the complexity of the model, regParam adds a penalty to the cost
 b) The meaning of maxIter is the maximum number of iterations to perform before giving up. As we expected, the more we run the loop, the more parameters get closer to the optimum. However, more iterations also mean higher computational costs, especially for large datasets. In this way, a proper maxIter that can balance the performance of the model and the computational cost is needed. In this case, we get the maxIter when the accuracy converges, i.e. the accuracy will not increase or increase slightly as we increase the maxIter.
 
 ## Tensorflow
-In Tensorflow, we chose Neural Networks and Linear Regression to train the model. 
+In Tensorflow, we chose Neural Networks and Linear Regression to train the model. Neural Network is the most universal method for regression.
 ### What parameters and how we tune them?
 1. During the training process of the Neural Network, the number of layers and the number of neurons in each layer are finetuned to reach a better performance. 
 a) Among all the hyperparameters of NN, the number of layers greatly enhances the model's capability of prediction. However, there is also a greater chance for a deep neural network with more layers to underfit without enough data. Generally, 3-5 layers are enough for regular-size datasets.
@@ -45,3 +46,22 @@ b) Also, the number of neurons in each layer is as significant as the num of lay
 To this end, we tune the two hyperparameters simultaneously using param grid and choose the model with the highest accuracy.
 
 2. During the training process of Linear Regression, we tuned the learning rate, which is different from the hyperparameters we tuned in pySpark, to get the model with better prediction accuracy. It can be easily found that when the learning rate is too large(i.e., equal to 0.001), the accuracy of the model oscillates, which means the trainable parameters skips the optimum. Also, when we give a lower learning rate(i.e., equal to 0.00001 or 0.000001), even if we run ten times more iterations, it gives a similar performance to 15 iterations as the lr=0.0001. To balance the accuracy and the computational cost, the learning rate was chosen as 0.0001.
+
+# exact steps on how to get this application working on a new machine
+## for project-1_local:
+#### updata for postgres:
+#update your db username
+db_properties['username']="your_user_name"
+#update your db password
+db_properties['password']="your_password"
+#make sure you got the right port number here
+db_properties['url']= "your_url"
+#make sure you had the Postgres JAR file in the right location
+db_properties['driver']="org.postgresql.Driver"
+
+## for project-1_cloud:
+update for your data direction:
+find your bucket datails, copy the gsutil URI for players_15.csv to 22.
+players_15 = spark.read.csv('your_gsutil_URI',header=True, inferSchema = True)
+repeat it for all data
+
