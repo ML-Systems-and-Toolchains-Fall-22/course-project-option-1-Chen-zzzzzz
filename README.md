@@ -47,7 +47,7 @@ To this end, we tune the two hyperparameters simultaneously using param grid and
 
 2. During the training process of Linear Regression, we tuned the learning rate, which is different from the hyperparameters we tuned in pySpark, to get the model with better prediction accuracy. It can be easily found that when the learning rate is too large(i.e., equal to 0.001), the accuracy of the model oscillates, which means the trainable parameters skips the optimum. Also, when we give a lower learning rate(i.e., equal to 0.00001 or 0.000001), even if we run ten times more iterations, it gives a similar performance to 15 iterations as the lr=0.0001. To balance the accuracy and the computational cost, the learning rate was chosen as 0.0001.
 
-# exact steps on how to get this application working on a new machine
+# Exact steps on how to get this application working on a new machine
 ## for project-1_local:
 #### updata for postgres:
 #update your db username
@@ -64,4 +64,5 @@ update for your data direction:
 find your bucket datails, copy the gsutil URI for players_15.csv to 22.
 players_15 = spark.read.csv('your_gsutil_URI',header=True, inferSchema = True)
 repeat it for all data
+
 
