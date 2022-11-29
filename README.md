@@ -66,4 +66,4 @@ players_15 = spark.read.csv('your_gsutil_URI',header=True, inferSchema = True)
 repeat it for all data
 
 # url for video
-https://drive.google.com/file/d/1l8to-9-ggYzyOGVoLTdBzBSRvbB5OFWk/view?usp=sharing
+https://drive.google.com/drive/folders/1lCZPBsHtBb0S_1coNgYzHmGQWACKvSvj?usp=share_link
