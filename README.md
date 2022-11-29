@@ -31,17 +31,24 @@ Linear regression is the most wide-used regression algorithm. It makes the estim
 The random forest has the ability to handle large datasets efficiently, and it produces good predictions that can be understood easily.
 ### What parameters and how we tune them?
 1. In random forests, we choose to change numTrees and maxDepth. 
+
 a) Among the parameters of the decision tree, maxDepth works on the macrplevel by greatly reducing the growth of the decision tree. The drawback of the maxdepth is that the model inclines to overfit the training set when the value of the maxDepth is too large. Therefore, its generalization will become weak, and it has low prediction accuracy for those points that are not existing in the training set. In this case, to balance the accuracy and the generalization, we should carefully choose the value of the maxDepth. We found that the accuracy of the training set would increase when we increased the value of the maxDepth. However, the accuracy of the test dataset would decrease if the value of the maxDepth is too large, which means that the model starts to overfit. 
+
 b) The properties of the numTrees are similar to the maxDepth.
+
 2. In linear regression, we chose to change the value of regParam and maxIter.
+
 a) Depending on the complexity of the model, regParam adds a penalty to the cost. When the penalty is too large, the accuracy of the model decreases.
+
 b) The meaning of maxIter is the maximum number of iterations to perform before giving up. As we expected, the more we run the loop, the more parameters get closer to the optimum. However, more iterations also mean higher computational costs, especially for large datasets. In this way, a proper maxIter that can balance the performance of the model and the computational cost is needed. In this case, we get the maxIter when the accuracy converges, i.e. the accuracy will not increase or increase slightly as we increase the maxIter.
 
 ## Tensorflow
 In Tensorflow, we chose Neural Networks and Linear Regression to train the model. Neural Network is the most universal method for regression.
 ### What parameters and how we tune them?
-1. During the training process of the Neural Network, the number of layers and the number of neurons in each layer are finetuned to reach a better performance. 
+1. During the training process of the Neural Network, the number of layers and the number of neurons in each layer are finetuned to reach a better performance.
+
 a) Among all the hyperparameters of NN, the number of layers greatly enhances the model's capability of prediction. However, there is also a greater chance for a deep neural network with more layers to underfit without enough data. Generally, 3-5 layers are enough for regular-size datasets.
+
 b) Also, the number of neurons in each layer is as significant as the num of layers. It can also, to some extent, decide the model's capability of the prediction(not as efficient as the number of layers). The finetuning strategy of num of neurons is similar to the num of layers. 
 To this end, we tune the two hyperparameters simultaneously using param grid and choose the model with the highest accuracy.
 
@@ -50,19 +57,31 @@ To this end, we tune the two hyperparameters simultaneously using param grid and
 # Exact steps on how to get this application working on a new machine
 ## for project-1_local:
 #### updata for postgres:
+
 #update your db username
+
 db_properties['username']="your_user_name"
+
 #update your db password
+
 db_properties['password']="your_password"
+
 #make sure you got the right port number here
+
 db_properties['url']= "your_url"
+
 #make sure you had the Postgres JAR file in the right location
+
 db_properties['driver']="org.postgresql.Driver"
 
 ## for project-1_cloud:
+
 update for your data direction:
+
 find your bucket datails, copy the gsutil URI for players_15.csv to 22.
+
 players_15 = spark.read.csv('your_gsutil_URI',header=True, inferSchema = True)
+
 repeat it for all data
 
 # url for video
